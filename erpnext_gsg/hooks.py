@@ -185,7 +185,9 @@ fixtures = [
 		"filters": {
 			"name": ["in", [
 				"Journal Entry-voucher_type-options",
+				"Payment Entry-naming_series-options",
 			]]
 		}
-	}
+	},
+
 ]
