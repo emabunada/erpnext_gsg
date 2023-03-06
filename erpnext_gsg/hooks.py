@@ -179,3 +179,13 @@ user_data_fields = [
 #	"erpnext_gsg.auth.validate"
 # ]
 
+fixtures = [
+	{
+		"dt": "Property Setter",
+		"filters": {
+			"name": ["in", [
+				"Journal Entry-voucher_type-options",
+			]]
+		}
+	}
+]
