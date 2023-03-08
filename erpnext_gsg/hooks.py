@@ -32,6 +32,10 @@ app_license = "MIT"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+    "Purchase Invoice": "overrides/js/purchase_invoice.js",
+    "Sales Invoice": "overrides/js/sales_invoice.js"
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -102,6 +106,13 @@ app_license = "MIT"
 #		"on_trash": "method"
 #	}
 # }
+#
+# doc_events = {
+#     "Purchase Invoice": {
+#         "validate": "erpnext_gsg.events.vat_tax_event",
+#
+#     }
+# }
 
 # Scheduled Tasks
 # ---------------
@@ -152,24 +163,24 @@ app_license = "MIT"
 # --------------------
 
 user_data_fields = [
-	{
-		"doctype": "{doctype_1}",
-		"filter_by": "{filter_by}",
-		"redact_fields": ["{field_1}", "{field_2}"],
-		"partial": 1,
-	},
-	{
-		"doctype": "{doctype_2}",
-		"filter_by": "{filter_by}",
-		"partial": 1,
-	},
-	{
-		"doctype": "{doctype_3}",
-		"strict": False,
-	},
-	{
-		"doctype": "{doctype_4}"
-	}
+    {
+        "doctype": "{doctype_1}",
+        "filter_by": "{filter_by}",
+        "redact_fields": ["{field_1}", "{field_2}"],
+        "partial": 1,
+    },
+    {
+        "doctype": "{doctype_2}",
+        "filter_by": "{filter_by}",
+        "partial": 1,
+    },
+    {
+        "doctype": "{doctype_3}",
+        "strict": False,
+    },
+    {
+        "doctype": "{doctype_4}"
+    }
 ]
 
 # Authentication and authorization
@@ -180,14 +191,30 @@ user_data_fields = [
 # ]
 
 fixtures = [
-	{
-		"dt": "Property Setter",
-		"filters": {
-			"name": ["in", [
-				"Journal Entry-voucher_type-options",
-				"Payment Entry-naming_series-options",
-			]]
-		}
-	},
+    {
+        "dt": "Property Setter",
+        "filters": {
+            "name": ["in", [
+                "Journal Entry-voucher_type-options",
+                "Payment Entry-naming_series-options",
+            ]]
+        }
+    },
+    # {
+    #     "dt": "Sales Taxes and Charges Template",
+    #     "filters": {
+    #         "name": ["in", [
+    #             "Sales Taxes template - Gs",
+    #         ]]
+    #     }
+    # },
+    # {
+    #     "dt": "Purchase Taxes and Charges Template",
+    #     "filters": {
+    #         "name": ["in", [
+    #             "Purchase Taxes template - Gs",
+    #         ]]
+    #     }
+    # },
 
 ]
