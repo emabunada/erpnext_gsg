@@ -4,14 +4,12 @@ import frappe
 @frappe.whitelist()
 def create_purchase_vat_template():
     accounts = frappe.get_list("Account", filters={"root_type": 'Expense' or ''})
-
     parent_account = accounts[0].name
     account_name = 'Purchase Vat Account'
     if not check_if_account_exist(account=account_name):
         create_account(account_name=account_name, parent_account=parent_account, account_type='Chargeable')
     vat_account_name = frappe.get_list("Account", filters={"account_name": account_name})[0].name
     vat_title = "Purchase Tax 16%"
-    print(check_if_vat_exist(vat_title))
     if not check_if_vat_exist(vat_title):
         create_tax(vat_title, vat_account_name, vat_type="Purchase Taxes and Charges Template")
 
@@ -23,11 +21,7 @@ def create_sales_vat_template():
     account_name = 'Sales Vat Account'
     if not check_if_account_exist(account=account_name):
         create_account(account_name=account_name, parent_account=parent_account, account_type='Chargeable')
-    print('x' * 100)
-
     vat_account_name = check_if_account_exist(account=account_name)[0].name
-
-    print('x' * 100, vat_account_name)
     vat_title = "Sales Tax 16%"
     if not check_if_vat_exist(vat_title):
         create_tax(vat_title, vat_account_name, vat_type="Sales Taxes and Charges Template")

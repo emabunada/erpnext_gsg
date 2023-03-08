@@ -107,12 +107,12 @@ doctype_js = {
 #	}
 # }
 #
-# doc_events = {
-#     "Purchase Invoice": {
-#         "validate": "erpnext_gsg.events.vat_tax_event",
-#
-#     }
-# }
+doc_events = {
+    "Material Request": {
+        "on_submit": "erpnext_gsg.events.material_request_events.create_stock_entry",
+
+    }
+}
 
 # Scheduled Tasks
 # ---------------
@@ -200,21 +200,6 @@ fixtures = [
             ]]
         }
     },
-    # {
-    #     "dt": "Sales Taxes and Charges Template",
-    #     "filters": {
-    #         "name": ["in", [
-    #             "Sales Taxes template - Gs",
-    #         ]]
-    #     }
-    # },
-    # {
-    #     "dt": "Purchase Taxes and Charges Template",
-    #     "filters": {
-    #         "name": ["in", [
-    #             "Purchase Taxes template - Gs",
-    #         ]]
-    #     }
-    # },
+
 
 ]
