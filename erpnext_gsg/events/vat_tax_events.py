@@ -19,6 +19,7 @@ def create_sales_vat_template():
     accounts = frappe.get_list("Account", filters={"root_type": 'Income' or ''})
     parent_account = accounts[0].name
     account_name = 'Sales Vat Account'
+
     if not check_if_account_exist(account=account_name):
         create_account(account_name=account_name, parent_account=parent_account, account_type='Chargeable')
     vat_account_name = check_if_account_exist(account=account_name)[0].name
@@ -41,13 +42,11 @@ def create_account(account_name, parent_account, account_type):
 
 def check_if_account_exist(account):
     accounts = frappe.get_list("Account", filters={"account_name": account})
-    print(accounts)
     return accounts
 
 
 def check_if_vat_exist(vat_name):
-    taxes = frappe.get_list("Purchase Taxes and Charges Template", filters={"title": vat_name})
-    print(taxes)
+    taxes = frappe.get_list("Sales Taxes and Charges Template", filters={"title": vat_name})
     return taxes
 
 

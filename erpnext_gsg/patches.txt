@@ -1,0 +1,1 @@
+erpnext_gsg.patches.sales_order_time_mandatory
