@@ -36,6 +36,7 @@ def get_columns(filters=None):
             "width": 80,
 
         },
+        {"label": _("Attendance Reference"), "fieldname": "reference", "fieldtype": "HTML"},
     ]
     return columns
 
@@ -57,9 +58,10 @@ def get_data(filters):
         new_filters = {
             "attendance_date": ("between", [filters.get("from_date"), filters.get("to_date")])
         }
-    fields = {'employee', 'employee_name', 'department', 'attendance_date', 'check_in', 'check_out'}
+    fields = {'employee', 'employee_name', 'department', 'attendance_date', 'check_in', 'check_out', 'name'}
     data = frappe.db.get_all('Attendance', fields, filters=new_filters)
     add_working_hours(data)
+    add_reference(data)
     return data
 
 
@@ -73,5 +75,17 @@ def add_working_hours(data):
             working_hours = 0.0
             row.working_hours = working_hours
 
+
+def add_reference(data):
+    for row in data:
+        row.reference = f"<a class='ellipsis' href='/app/attendance/{row.name}' title='{row.name}' data-doctype='Attendance' data-name='{row.name}'>{row.employee_name}</a>"
+
+        # frappe.utils.get_link_to_form('Attendance', row.name)
+
+        # f"<a class='ellipsis' href='/app/attendance/{row.name}' title='{row.name}' data-doctype='Attendance' data-name='{row.name}'>{row.employee_name}</a>"
+
+# <a class="ellipsis" href="/app/attendance/HR-ATT-2023-00001" title="_Test Employee 1" data-doctype="Attendance" data-name="HR-ATT-2023-00001">
+# 					_Test Employee 1
+# 				</a>
 # "{party_type}:Link/{party_type}".format(party_type=party_type),
 # "{party_value_type}::150".format(party_value_type=frappe.unscrub(str(party_type_value))),
