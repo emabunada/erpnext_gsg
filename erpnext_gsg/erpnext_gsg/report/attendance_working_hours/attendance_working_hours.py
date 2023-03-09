@@ -21,6 +21,7 @@ def get_columns(filters=None):
         {"label": _("Employee Name"), "fieldname": "employee_name", "fieldtype": "Data"},
         {"label": _("Department"), "fieldname": "department", "fieldtype": "Data"},
         {"label": _("Attendance Date"), "fieldname": "attendance_date", "fieldtype": "Date"},
+        {"label": _("Working Hours"), "fieldname": "working_hours", "fieldtype": "Float"},
         {
             "label": _("Check In"),
             "fieldname": "check_in",
@@ -58,8 +59,19 @@ def get_data(filters):
         }
     fields = {'employee', 'employee_name', 'department', 'attendance_date', 'check_in', 'check_out'}
     data = frappe.db.get_all('Attendance', fields, filters=new_filters)
-
+    add_working_hours(data)
     return data
+
+
+def add_working_hours(data):
+    for row in data:
+        if row.check_in and row.check_out:
+            working_hours = frappe.utils.time_diff_in_hours(row.check_out, row.check_in)
+
+            row.working_hours = working_hours
+        else:
+            working_hours = 0.0
+            row.working_hours = working_hours
 
 # "{party_type}:Link/{party_type}".format(party_type=party_type),
 # "{party_value_type}::150".format(party_value_type=frappe.unscrub(str(party_type_value))),
