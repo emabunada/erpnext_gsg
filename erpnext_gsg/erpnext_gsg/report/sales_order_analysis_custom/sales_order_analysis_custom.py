@@ -47,13 +47,10 @@ def get_conditions(filters):
 		conditions += " and so.sales_order_time between %(from_time)s and %(to_time)s"
 	if filters.get("company"):
 		conditions += " and so.company = %(company)s"
-
 	if filters.get("sales_order"):
 		conditions += " and so.name in %(sales_order)s"
-
 	if filters.get("status"):
 		conditions += " and so.status in %(status)s"
-
 	return conditions
 
 
