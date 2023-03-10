@@ -9,11 +9,12 @@
   "employee",
   "employee_name",
   "department",
+  "reason",
+  "column_break_5ai8u",
   "excuse_date",
   "from_time",
   "to_time",
-  "hours",
-  "reason"
+  "hours"
  ],
  "fields": [
   {
@@ -58,11 +59,15 @@
    "fieldname": "reason",
    "fieldtype": "Small Text",
    "label": "Reason"
+  },
+  {
+   "fieldname": "column_break_5ai8u",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-03-09 18:33:40.187847",
+ "modified": "2023-03-10 01:35:19.452436",
  "modified_by": "Administrator",
  "module": "Erpnext Gsg",
  "name": "Employee Excuse application",
