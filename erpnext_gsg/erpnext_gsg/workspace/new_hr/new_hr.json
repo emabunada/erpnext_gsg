@@ -17,6 +17,14 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "test",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "To Whom It Concerns",
    "link_to": "To Whom It Concerns",
    "link_type": "DocType",
@@ -33,7 +41,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-03-10 09:14:00.606021",
+ "modified": "2023-03-10 09:26:38.258889",
  "modified_by": "Administrator",
  "module": "Erpnext Gsg",
  "name": "new hr",
