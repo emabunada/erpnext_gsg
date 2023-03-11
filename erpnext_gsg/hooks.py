@@ -111,6 +111,10 @@ doc_events = {
     "Material Request": {
         "on_submit": "erpnext_gsg.events.material_request_events.create_stock_entry",
 
+    },
+    "Sales Invoice": {
+        "on_submit": "erpnext_gsg.events.sales_invoice_events.create_qrcode",
+
     }
 }
 
@@ -200,6 +204,5 @@ fixtures = [
             ]]
         }
     },
-
 
 ]
